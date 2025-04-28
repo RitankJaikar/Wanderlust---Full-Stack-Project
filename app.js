@@ -29,9 +29,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
-app.get("/", (req, res) => {
-    res.send("Hi, I am root.");
-});
+app.set('trust proxy', 1);
 app.use(
     expressSession({
         secret: process.env.SESSION_SECRET,
@@ -40,9 +38,10 @@ app.use(
         cookie: {
             //default name: "connect.sid"
             // expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-            maxAge: 1000*60*60*24*7,
+            maxAge: 1000*60*60*24*7,    // 7 days
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production" // only secure in production
+            secure: process.env.NODE_ENV === "production", // only secure in production
+            sameSite: 'lax', // or 'none' (depending on your frontend/backend connection)
         },
         store: connectMongo.create({
             // collectionName: "sessions"  //default
@@ -76,6 +75,9 @@ app.use((req, res, next) => {
 // });
 
 // Routes
+app.get("/", (req, res) => {
+    res.send("Hi, I am root.");
+});
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
@@ -98,7 +100,10 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", {message});
 });
 
+// For dev
+// app.listen(8080, () => {
+//     console.log("server is listning to port 8080");
+// });
 
-app.listen(8080, () => {
-    console.log("server is listning to port 8080");
-});
+// For prod
+module.exports = app;
