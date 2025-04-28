@@ -1,5 +1,7 @@
 # 🏡 Wanderlust
 
+Link - https://wanderlust-full-stack-project-dlojjj6m4-ritank-jaikars-projects.vercel.app/listings
+
 This is a full-stack **Wanderlust** built using **Node.js**, **Express**, **MongoDB**, and **EJS** templating engine. The application allows users to browse property listings, view detailed pages for each property, and manage the data in a structured and scalable way.
 
 ## 📐 MVC Architecture
