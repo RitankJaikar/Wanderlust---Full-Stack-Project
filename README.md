@@ -344,4 +344,4 @@ Store coordinates in mongoDB as GeoJSON format. This format have special methods
 
 ### ✅ Step 18: Deployment
 
-Push on Github and Deploy On Netlify.
+Push on Github and Deploy On Varcel.
