@@ -16,7 +16,7 @@ body {
 /* Navbar */
 
 .navbar {
-  padding: 16px 0px 16px 0px;
+  padding: 4px 0px 4px 0px;
   background-color: white;
   transition: top 0.4s, height 0.3s ease-in-out; /* Smooth transition */
 }
