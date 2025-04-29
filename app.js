@@ -76,7 +76,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.get("/", (req, res) => {
-    res.send("Hi, I am root.");
+    res.render("home.ejs");
 });
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
