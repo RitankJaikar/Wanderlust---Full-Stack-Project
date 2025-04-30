@@ -1,26 +1,45 @@
 const passport = require("passport");
 const asyncWrap = require("../utils/asyncWrap");
-const { saveRedirectUrl } = require("../middleware");
+const { saveRedirectUrl, isLoggedOut, isLoggedIn, isInSignupFlow } = require("../middleware");
 const express = require("express");
-const useController = require("../controller/user");
+const userController = require("../controller/user");
 
 const userRouter = express.Router();
 
+// Signup route (step 1: collect user info and send OTP)
 userRouter.route("/signup")
-.get(useController.renderSignupForm)
-.post(asyncWrap(useController.signup));
+  .get(isLoggedOut("You are already registered!"), userController.renderSignupForm)
+  .post(isLoggedOut(), asyncWrap(userController.signup));
 
+// Email verification route (step 2: verify OTP and register user)
+userRouter.route("/signup/verify-email")
+  .get(isInSignupFlow, (req, res) => res.render("users/verify-email.ejs"))
+  .post(isInSignupFlow, asyncWrap(userController.verifyOTPandRegister));
+
+// Resends a new OTP to the user's email
+userRouter.post("/signup/resend-otp", isInSignupFlow, asyncWrap(userController.resendOTP));
+
+// Login route (uses email and password)
 userRouter.route("/login")
-.get(useController.renderLoginForm)
-.post(
+  .get(isLoggedOut(), userController.renderLoginForm)
+  .post(
+    isLoggedOut(),
     saveRedirectUrl,
     passport.authenticate("local", {
       failureRedirect: "/login",
-      failureFlash: true,
+      failureFlash: 'Password or email is incorrect'
     }),
-    asyncWrap(useController.login)
-);
 
-userRouter.get("/logout", useController.logout);
+    async (req, res, next) => {
+      console.log("✅ Logged in user:", req.user);  // Debug
+      next();
+    },
+
+    asyncWrap(userController.login)
+  );
+
+// Logout user and destroy session
+userRouter.get("/logout", isLoggedIn("You must be logged in to logout!"), userController.logout);
+
 
 module.exports = userRouter;

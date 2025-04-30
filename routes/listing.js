@@ -12,7 +12,7 @@ const listingRouter = express.Router();
 listingRouter.route("/")
 .get(asyncWrap(listingController.index))
 .post(
-  isLoggedIn("LogIn to add new listing!"),
+  isLoggedIn("Log In to add new listing!"),
   upload.single("listing[image]"),  // upload first
   validateListing,                  // then validate
   asyncWrap(listingController.createListing)
@@ -21,21 +21,21 @@ listingRouter.route("/")
 //new lisitng, this should be before /:id route
 listingRouter.get(
   "/new",
-  isLoggedIn("LogIn to add new listing!"),
+  isLoggedIn("Log In to add new listing!"),
   asyncWrap(listingController.renderNewForm)
 );
 
 listingRouter.route("/:id")
 .get(asyncWrap(listingController.showlisting))
 .put(
-  isLoggedIn("LogIn to edit a listing!"),
+  isLoggedIn("Log In to edit a listing!"),
   isOwner("You don't have permission to edit!"),
   upload.single("listing[image]"),
   validateListing,
   asyncWrap(listingController.editListing)
 )
 .delete(
-  isLoggedIn("LogIn to delete a listing!"),
+  isLoggedIn("Log In to delete a listing!"),
   isOwner("You don't have permission to delete!"),
   asyncWrap(listingController.deleteListing)
 );
@@ -43,7 +43,7 @@ listingRouter.route("/:id")
 //edit route
 listingRouter.get(
   "/:id/edit",
-  isLoggedIn("LogIn to edit a listing!"),
+  isLoggedIn("Log In to edit a listing!"),
   isOwner("You don't have permission to edit!"),
   asyncWrap(listingController.renderEditForm)
 );

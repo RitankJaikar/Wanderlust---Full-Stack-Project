@@ -345,3 +345,19 @@ Store coordinates in mongoDB as GeoJSON format. This format have special methods
 ### ✅ Step 18: Deployment
 
 Push on Github and Deploy On Vercel.
+
+### ✅ Step 19: New user flow
+
+🚫 User is not saved to the database until email verification is complete.
+
+💾 Temporary user data + OTP is stored securely in the session.
+
+⏰ OTP expires in 10 minutes — enforced via expiresAt timestamp in session.
+
+✅ User is registered only after a valid OTP match.
+
+🔐 Session checks + OTP logic prevent unauthorized access or tampering (e.g., expired session, reused/invalid OTP).
+
+🔁 Resending OTP is rate-limited (1 OTP per minute per email) to prevent abuse.
+
+🛡️ Routes like /signup/verify-email and /signup/resend-otp are protected using isInSignupFlow middleware to ensure they can't be accessed directly without initiating the signup process.
