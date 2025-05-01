@@ -13,7 +13,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
-// const userRouter = require("./routes/user");
+const userRouter = require("./routes/user");
 const connectMongo = require("connect-mongo");
 
 // Connect to DB
@@ -80,7 +80,7 @@ app.get("/", (req, res) => {
 });
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
-// app.use("/", userRouter);
+app.use("/", userRouter);
 
 // Unmatched route for debugging
 // app.use((req, res, next) => {
