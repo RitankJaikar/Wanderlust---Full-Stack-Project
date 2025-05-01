@@ -62,4 +62,5 @@ module.exports = function getOtpEmailHtml(otp) {
     </html>
     `;
 };
-  
+
+module.exports = getOtpEmailHtml;
