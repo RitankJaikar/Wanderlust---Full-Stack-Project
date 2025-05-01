@@ -15,6 +15,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const userRouter = require("./routes/user");
 const connectMongo = require("connect-mongo");
+const categories = require("./utils/categories");
 
 // Connect to DB
 require("./config/db");
@@ -64,6 +65,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user; //for validating options in Navbar.ejs
+    res.locals.categories = categories
     next();
 });
 

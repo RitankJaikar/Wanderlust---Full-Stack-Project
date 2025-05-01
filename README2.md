@@ -361,3 +361,9 @@ Push on Github and Deploy On Vercel.
 🔁 Resending OTP is rate-limited (1 OTP per minute per email) to prevent abuse.
 
 🛡️ Routes like /signup/verify-email and /signup/resend-otp are protected using isInSignupFlow middleware to ensure they can't be accessed directly without initiating the signup process.
+
+### ✅ Step 19: Add categories and user profile
+
+Add user profile. Forgot password, edit user info in future. 
+
+Add categories to listing and use it as filter on home page.

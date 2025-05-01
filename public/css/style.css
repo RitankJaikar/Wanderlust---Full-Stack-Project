@@ -240,73 +240,12 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .filter:hover {
-  background-color: #fe424d; /* Red */
+  background-color: #fe424d; /* Default */
   color: white;
 }
 
 .filter i {
   font-size: 18px;
-}
-
-/* Custom hover colors for each filter */
-.filter-trending:hover {
-  background-color: #ff5733; /* Trending - Orange */
-}
-
-.filter-new:hover {
-  background-color: #28a745; /* New - Green */
-}
-
-.filter-popular:hover {
-  background-color: #ffc107; /* Popular - Yellow */
-}
-
-.filter-featured:hover {
-  background-color: #007bff; /* Featured - Blue */
-}
-
-.filter-surfing:hover {
-  background-color: #f39c12; /* Surfing - Yellow */
-}
-
-.filter-rooms:hover {
-  background-color: #17a2b8; /* Rooms - Teal */
-}
-
-.filter-cabins:hover {
-  background-color: #6c757d; /* Cabins - Grey */
-}
-
-.filter-omg:hover {
-  background-color: #e83e8c; /* OMG! - Pink */
-}
-
-.filter-amazing-view:hover {
-  background-color: #6610f2; /* Amazing View - Purple */
-}
-
-.filter-beachfront:hover {
-  background-color: #20c997; /* Beachfront - Teal */
-}
-
-.filter-islands:hover {
-  background-color: #fd7e14; /* Islands - Orange */
-}
-
-.filter-luxe:hover {
-  background-color: #343a40; /* Luxe - Dark */
-}
-
-.filter-tropical:hover {
-  background-color: #fd3a3a; /* Tropical - Red */
-}
-
-.filter-lake:hover {
-  background-color: #1d88a3; /* Lake - Blue */
-}
-
-.filter-mountains:hover {
-  background-color: #6f42c1; /* Mountains - Purple */
 }
 
 /* Home Page */
@@ -342,3 +281,5 @@ input[type="range"]::-moz-range-thumb {
   background-color: #fe424d !important;
   color: white !important;
 }
+
+/* Category Checkbox */

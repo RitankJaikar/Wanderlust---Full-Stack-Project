@@ -1,6 +1,6 @@
 const Listing = require("./models/listing");
 const Review = require("./models/review");
-const { listingSchema, reviewSchema } = require("./schema");
+const { listingSchema, reviewSchema, userSchema } = require("./schema");
 const ExpressError = require("./utils/ExpressError");
 
 const isLoggedIn = (message = "You must be logged in!") => {
@@ -66,6 +66,17 @@ const validateReview = (req, res, next) => {
     }
 };
 
+const validateUser = (req, res, next) => {
+    let result = userSchema.validate(req.body);
+    if(result.error) {
+        let errMsg = result.error.details.map((el) => el.message).join(", ");
+        throw new ExpressError(400, errMsg);
+    }
+    else {
+        next();
+    }
+};
+
 const isOwner = (message = "You don't have permission!") => {
     return async (req, res, next) => {
         let { id } = req.params;
@@ -104,4 +115,4 @@ const isInSignupFlow = (req, res, next) => {
     next();
 };
 
-module.exports = {isLoggedIn, isLoggedOut, saveRedirectUrl, validateListing, validateReview, isOwner, isReviewAuthor, isInSignupFlow};
+module.exports = {isLoggedIn, isLoggedOut, saveRedirectUrl, validateListing, validateReview, validateUser, isOwner, isReviewAuthor, isInSignupFlow};

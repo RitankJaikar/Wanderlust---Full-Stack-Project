@@ -43,7 +43,7 @@ const createListing = async (req, res) => {
     // if(!req.body.listing) {  //better use asyncWrap for all
     //     throw new ExpressError(400, "Send valid data for listing");
     // }
-
+    
     let response = await geocodingClient.forwardGeocode({
         query: req.body.listing.location + ", " + req.body.listing.country,
         limit: 1

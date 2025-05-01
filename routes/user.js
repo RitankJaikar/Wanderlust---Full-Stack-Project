@@ -5,6 +5,7 @@ const {
   isLoggedOut,
   isLoggedIn,
   isInSignupFlow,
+  validateUser,
 } = require("../middleware");
 const express = require("express");
 const userController = require("../controller/user");
@@ -18,7 +19,7 @@ userRouter
     isLoggedOut("You are already registered!"),
     userController.renderSignupForm
   )
-  .post(isLoggedOut(), asyncWrap(userController.signup));
+  .post(isLoggedOut(), validateUser, asyncWrap(userController.signup));
 
 // Email verification route (step 2: verify OTP and register user)
 userRouter
