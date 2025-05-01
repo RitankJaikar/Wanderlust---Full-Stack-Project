@@ -1,6 +1,6 @@
 // otpTemplate.js
 
-exports.getOtpEmailHtml = function(otp) {
+module.exports = function getOtpEmailHtml(otp) {
     return `
     <!DOCTYPE html>
     <html>
@@ -62,5 +62,3 @@ exports.getOtpEmailHtml = function(otp) {
     </html>
     `;
 };
-
-module.exports = getOtpEmailHtml;
