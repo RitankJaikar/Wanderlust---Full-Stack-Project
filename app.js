@@ -80,7 +80,7 @@ app.get("/", (req, res) => {
 });
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
-// app.use("/", userRouter);
+app.use("/", userRouter);
 
 // Unmatched route for debugging
 // app.use((req, res, next) => {
