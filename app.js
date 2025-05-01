@@ -76,7 +76,8 @@ app.use((req, res, next) => {
 
 // Routes
 app.get("/", (req, res) => {
-    res.render("home.ejs");
+    // res.render("home.ejs");
+    res.send("Hi, I am root.");
 });
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
@@ -101,9 +102,9 @@ app.use((err, req, res, next) => {
 });
 
 // For dev
-app.listen(8080, () => {
-    console.log("server is listning to port 8080");
-});
+// app.listen(8080, () => {
+//     console.log("server is listning to port 8080");
+// });
 
 // For prod
 module.exports = app;
