@@ -16,8 +16,6 @@ const User = require("./models/user");
 const userRouter = require("./routes/user");
 const connectMongo = require("connect-mongo");
 
-console.log(userRouter);
-
 // Connect to DB
 require("./config/db");
 

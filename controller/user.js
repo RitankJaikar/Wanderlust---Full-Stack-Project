@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const nodemailer = require("nodemailer");
-const getOtpEmailHtml = require("../public/js/getOtpEmailHtml");
+const getOtpEmailHtml = require("../utils/GetOtpEmailHtml");
 
 const renderSignupForm = (req, res) => {
     res.render("users/signup.ejs");
