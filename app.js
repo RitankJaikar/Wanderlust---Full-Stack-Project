@@ -6,8 +6,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
 const ExpressError = require("./utils/ExpressError");
-// const listingRouter = require("./routes/listing");
-// const reviewRouter = require("./routes/review");
+const listingRouter = require("./routes/listing");
+const reviewRouter = require("./routes/review");
 const expressSession = require("express-session");
 const flash = require("connect-flash");
 // const passport = require("passport");
@@ -78,8 +78,8 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
     res.render("home.ejs");
 });
-// app.use("/listings", listingRouter);
-// app.use("/listings/:id/reviews", reviewRouter);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
 // app.use("/", userRouter);
 
 // Unmatched route for debugging
