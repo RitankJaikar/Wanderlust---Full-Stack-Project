@@ -29,12 +29,6 @@ userRouter.route("/login")
       failureRedirect: "/login",
       failureFlash: 'Password or email is incorrect'
     }),
-
-    async (req, res, next) => {
-      console.log("✅ Logged in user:", req.user);  // Debug
-      next();
-    },
-
     asyncWrap(userController.login)
   );
 

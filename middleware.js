@@ -14,7 +14,7 @@ const isLoggedIn = (message = "You must be logged in!") => {
             else {
                 req.session.redirectUrl = req.originalUrl;
             }
-            console.log(message);
+            // console.log(message);
             req.flash("error", message);
             return res.redirect("/login");
         }
@@ -27,7 +27,7 @@ const isLoggedOut = (message = "You are already logged in!") => {
         // console.log(req.method, req.originalUrl, "isLoggedOut isAuthenticated? ->", req.isAuthenticated());  // Debug line
             
         if (req.isAuthenticated()) {
-            console.log(message);
+            // console.log(message);
             req.flash("error", message);
             return res.redirect("/listings"); // or redirect to dashboard
         }
