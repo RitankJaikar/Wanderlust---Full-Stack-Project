@@ -182,4 +182,9 @@ const logout = (req, res) => {
     })
 }
 
-module.exports = { renderSignupForm, signup, verifyOTPandRegister, resendOTP, renderLoginForm, login, logout  };
+const userProfile = (req, res) => {
+    const user = req.user;
+    res.render("users/user.ejs", { user });
+}
+
+module.exports = { renderSignupForm, signup, verifyOTPandRegister, resendOTP, renderLoginForm, login, logout, userProfile  };

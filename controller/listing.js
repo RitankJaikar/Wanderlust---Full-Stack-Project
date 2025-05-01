@@ -8,8 +8,13 @@ const index = async (req, res) => {
     res.render("listings/index.ejs",{allListings});
 };
 
+const userindex = async (req, res) => {
+    const ownerId = req.user._id;
+    const userListings = await Listing.find({ owner: ownerId });
+    res.render("listings/userindex.ejs", { userListings });
+};
+
 const renderNewForm = async (req, res) => {
-    // console.log(req.user);
     res.render("listings/new.ejs");
 };
 
@@ -95,4 +100,4 @@ const deleteListing = async (req, res) => {
     res.redirect("/listings");
 };
 
-module.exports = { index, renderNewForm, showlisting, createListing, renderEditForm, editListing, deleteListing };
+module.exports = { index, renderNewForm, showlisting, createListing, renderEditForm, editListing, deleteListing, userindex };
