@@ -56,9 +56,9 @@ app.use(
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new LocalStrategy({ usernameField: 'email' }, User.authenticate()));   // Passport will treat the email field from the login form as the "username"
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy({ usernameField: 'email' }, User.authenticate()));   // Passport will treat the email field from the login form as the "username"
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
