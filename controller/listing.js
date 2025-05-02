@@ -4,8 +4,15 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const geocodingClient = mbxGeocoding({ accessToken: process.env.MAP_TOKEN });
 
 const index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs",{allListings});
+    let allListings = await Listing.find({});
+
+    let filter = req.query.filter;
+    if(filter) {
+        filter = filter.replace("_", " ");
+        allListings = await Listing.find({ categories: { $in: [filter] } });
+    }
+
+    res.render("listings/index.ejs",{allListings, filter});
 };
 
 const userindex = async (req, res) => {

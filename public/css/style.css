@@ -239,6 +239,10 @@ input[type="range"]::-moz-range-thumb {
   align-items: center;
 }
 
+.filter span {
+  margin-bottom: 2px;
+}
+
 .filter:hover {
   background-color: #fe424d; /* Default */
   color: white;
@@ -246,6 +250,11 @@ input[type="range"]::-moz-range-thumb {
 
 .filter i {
   font-size: 18px;
+}
+
+.filter-clear:hover {
+  background-color: #5c636a !important;
+  color: white;
 }
 
 /* Home Page */
